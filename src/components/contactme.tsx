@@ -52,7 +52,7 @@ export default function ContactMe() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!validateForm()) return;
-    const url = process.env.NEXT_PUBLIC_MOCK_SERVER_URL_SUCCESS;
+    const url = process.env.NEXT_PUBLIC_CONTACT_API;
     if (!url) {
       throw new Error("The environment variable is not defined");
     }
