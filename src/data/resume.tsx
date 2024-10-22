@@ -209,7 +209,7 @@ export const DATA = {
       description:
         "We got 2nd place in this hackathon. We have opputunity to learn how to use AI to help people with disabilities. We have a chance to contact with FOUNDATION FOR THE BLIND IN THAILAND UNDER THE ROYAL PATRONAGE OF H.M. THE QUEEN to do some research.",
       image:
-        "/Microsoft_logo.svg",
+        "/microsoft-logo-png.png",
       links: [
       ],
     },
@@ -224,5 +224,32 @@ export const DATA = {
       links: [
       ],
     },
+    {
+      title: "Hackaday 2023 - CityHack",
+      dates: "November 25th - 26th, 2023",
+      location: "Bangkok, Thailand",
+      description:
+        "Hosted by Sirisoft and KMUTT, this hackathon challenged participants to create web applications focused on improving urban life in three areas: Education, Sustainability, and Infrastructure. Bangkok's Governor, Chadchart Sittipunt, presented awards to the winners.",
+      image:
+        "/sirisoft.png",
+      links: [
+        {
+          title: "Github",
+          icon: <Icons.github className="h-4 w-4" />,
+          href: "https://github.com/Narutchai01/sirisoft-hackathon",
+        }
+      ]
+    },
+    {
+      title: "Huawei Developer Competition APAC 2023",
+      dates: "August - October 2023",
+      location: "Bangkok, Thailand",
+      description:
+        "Top 50 Finalist in the Huawei Developer Competition APAC 2023. We have opportunity to learn how to use Huawei Cloud and how to use it in our project.",
+      image:
+        "/Huawei_Standard_logo.png",
+      links: [
+      ],
+    }
   ],
 } as const;
