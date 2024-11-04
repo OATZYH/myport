@@ -29,7 +29,7 @@ export const DATA = {
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
     // { href: "/blog", icon: NotebookIcon, label: "Blog" },
-    { href: "https://sarun-resume.vercel.app/", icon: NotebookIcon, label: "Resume" },
+    { href: "https://sarun-resume.tiiny.site", icon: NotebookIcon, label: "Resume" },
 
   ],
   contact: {
@@ -126,7 +126,7 @@ export const DATA = {
       links: [
         {
           type: "Website",
-          href: "https://skinzync.netlify.app",
+          href: "https://skinzync.com/",
           icon: <Icons.globe className="w-4 h-4" />,
         },
       ],
