@@ -108,7 +108,7 @@ export const DATA = {
   projects: [
     {
       title: "Skinzync Platform",
-      href: "",
+      href: "https://skinzync.com/",
       dates: "",
       active: true,
       description:
@@ -136,7 +136,7 @@ export const DATA = {
     },
     {
       title: "Expense tracker",
-      href: "",
+      href: "https://github.com/OATZYH/expense-tracker",
       dates: "",
       active: false,
       description:
@@ -161,7 +161,7 @@ export const DATA = {
     },
     {
       title: "Mobil Support",
-      href: "",
+      href: "https://github.com/WinRafaelx/Bootcathon_Application_Smuttee",
       dates: "June 2024 - July 2024",
       active: true,
       description:
@@ -184,6 +184,36 @@ export const DATA = {
       image: "",
       video: "/MobilSupport.mp4",
     },
+    {
+      title: "Shorten URL",
+      href: "https://shortsyn.netlify.app/",
+      dates: "",
+      active: true,
+      description:
+        "Develop a URL shortening system with React (frontend) and Node.js (backend) for creating and managing short links. Provide an intuitive interface and efficient link management for a seamless user experience.",
+      technologies: [
+        "React",
+        "Typescript",
+        "TailwindCSS",
+        "NodeJS",
+        "Express",
+        "PostgreSQL",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://shortsyn.netlify.app/",
+          icon: <Icons.globe className="w-4 h-4" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/OATZYH/Shorten-URL",
+          icon: <Icons.github className="w-4 h-4" />,
+        },
+      ],
+      image: "/shortenurl.png",
+      video: "",
+    }
   ],
   hackathons: [
     {
