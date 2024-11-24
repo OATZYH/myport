@@ -10,7 +10,7 @@ export const DATA = {
   description:
     "Software Engineer turned Entrepreneur. I love building things and helping people.",
   summary:
-    "I have strong skills in learning topics of interest effectively. I also keep learning new tools, which allows me to start work quickly. I have excellent skills as a team member and take high responsibility in any task assigned to me.",
+    "I'm a fast learner with strong skills in both frontend and backend (Fullstack) development. I’m always picking up new tools and tech, which helps me dive into projects quickly. Known for being a reliable team player, I take ownership of my work and enjoy collaborating to drive results. I thrive on tackling new challenges and continuously building my skill set.",
   avatarUrl: "/profiles-square-zoom.jpg",
   skills: [
     "React",
