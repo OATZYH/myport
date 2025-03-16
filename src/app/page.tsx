@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { HackathonCard } from "@/components/hackathon-card";
 import { BlurFade } from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
@@ -125,8 +126,25 @@ export default function Page() {
           </BlurFade>
           <div className="flex flex-wrap gap-1">
             {DATA.skills.map((skill, id) => (
-              <BlurFade key={skill} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
-                <Badge key={skill}>{skill}</Badge>
+              <BlurFade
+                key={skill.name}
+                delay={BLUR_FADE_DELAY * 10 + id * 0.05}
+              >
+                <Badge
+                  key={skill.name}
+                  variant="outline"
+                  className="flex items-center gap-2 px-3 py-1.5 text-sm bg-background hover:bg-muted rounded-lg"
+                >
+                  <div className="relative w-5 h-5 flex-shrink-0">
+                    <Image
+                      src={skill.logo || "https://placehold.co/400"}
+                      alt={`${skill.name} logo`}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                  {skill.name}
+                </Badge>
               </BlurFade>
             ))}
           </div>

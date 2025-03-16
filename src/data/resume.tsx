@@ -13,28 +13,75 @@ export const DATA = {
     "I'm a fast learner with strong skills in both frontend and backend (Fullstack) development. I’m always picking up new tools and tech, which helps me dive into projects quickly. Known for being a reliable team player, I take ownership of my work and enjoy collaborating to drive results. I thrive on tackling new challenges and continuously building my skill set.",
   avatarUrl: "/profiles-square-zoom.jpg",
   skills: [
-    "React",
-    "Next.js",
-    "Javascript",
-    "Typescript",
-    "Node.js",
-    "Python",
-    "Go",
-    "Flutter",
-    "SQL",
-    "Postgres",
-    "Docker",
-    "TailwindCSS",
+    {
+      name: "React",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+    },
+    {
+      name: "Next.js",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+    },
+    {
+      name: "JavaScript",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+    },
+    {
+      name: "TypeScript",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+    },
+    {
+      name: "Node.js",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+    },
+    {
+      name: "Express",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
+    },
+    {
+      name: "Python",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+    },
+    {
+      name: "Go",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg",
+    },
+    {
+      name: "Flutter",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg",
+    },
+    {
+      name: "MySQL",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+    },
+    {
+      name: "Postgres",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+    },
+    {
+      name: "MongoDB",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+    },
+    {
+      name: "Docker",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+    },
+    {
+      name: "TailwindCSS",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
+    },
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
     // { href: "/blog", icon: NotebookIcon, label: "Blog" },
-    { href: "https://sarun-resume.tiiny.site", icon: NotebookIcon, label: "Resume" },
-
+    {
+      href: "https://sarun-resume.tiiny.site",
+      icon: NotebookIcon,
+      label: "Resume",
+    },
   ],
   contact: {
     email: "sarun.khumthai@gmail.com",
-    tel: "+66 634124268", 
+    tel: "+66 634124268",
     social: {
       GitHub: {
         name: "GitHub",
@@ -131,8 +178,7 @@ export const DATA = {
         },
       ],
       image: "/logo-text-white.png",
-      video:
-        "",
+      video: "",
     },
     {
       title: "Expense tracker",
@@ -156,7 +202,8 @@ export const DATA = {
           icon: <Icons.github className="h-4 w-4" />,
         },
       ],
-      image: "https://raw.githubusercontent.com/OATZYH/expense-tracker/master/public/github/Home.png",
+      image:
+        "https://raw.githubusercontent.com/OATZYH/expense-tracker/master/public/github/Home.png",
       video: "",
     },
     {
@@ -213,7 +260,7 @@ export const DATA = {
       ],
       image: "/shortenurl.png",
       video: "",
-    }
+    },
   ],
   hackathons: [
     {
@@ -222,8 +269,7 @@ export const DATA = {
       location: "Bangkok, Thailand",
       description:
         "We got runner up in the ExxonMobil IT Bootcathon 2024. We have opputunity to learn how corporation using Auzure DevOps and how to work in a team.",
-      image:
-        "/Exxon_Mobil_Logo.svg",
+      image: "/Exxon_Mobil_Logo.svg",
       links: [
         {
           title: "Github",
@@ -238,10 +284,8 @@ export const DATA = {
       location: "Bangkok, Thailand",
       description:
         "We got 2nd place in this hackathon. We have opputunity to learn how to use AI to help people with disabilities. We have a chance to contact with FOUNDATION FOR THE BLIND IN THAILAND UNDER THE ROYAL PATRONAGE OF H.M. THE QUEEN to do some research.",
-      image:
-        "/microsoft-logo-png.png",
-      links: [
-      ],
+      image: "/microsoft-logo-png.png",
+      links: [],
     },
     {
       title: "Digital Innovation Sandbox",
@@ -249,10 +293,8 @@ export const DATA = {
       location: "Bangkok, Thailand",
       description:
         "I have opportunity to learn from the expert in the field of digital innovation. And How I bulid a startup from scratch. We have a chance to pitch our idea to the investor and got a runner up.",
-      image:
-        "/DIS_logo.jpg",
-      links: [
-      ],
+      image: "/DIS_logo.jpg",
+      links: [],
     },
     {
       title: "Hackaday 2023 - CityHack",
@@ -260,15 +302,14 @@ export const DATA = {
       location: "Bangkok, Thailand",
       description:
         "Hosted by Sirisoft and KMUTT, this hackathon challenged participants to create web applications focused on improving urban life in three areas: Education, Sustainability, and Infrastructure. Bangkok's Governor, Chadchart Sittipunt, presented awards to the winners.",
-      image:
-        "/sirisoft.png",
+      image: "/sirisoft.png",
       links: [
         {
           title: "Github",
           icon: <Icons.github className="h-4 w-4" />,
           href: "https://github.com/Narutchai01/sirisoft-hackathon",
-        }
-      ]
+        },
+      ],
     },
     {
       title: "Huawei Developer Competition APAC 2023",
@@ -276,10 +317,8 @@ export const DATA = {
       location: "Bangkok, Thailand",
       description:
         "Top 50 Finalist in the Huawei Developer Competition APAC 2023. We have opportunity to learn how to use Huawei Cloud and how to use it in our project.",
-      image:
-        "/Huawei_Standard_logo.png",
-      links: [
-      ],
-    }
+      image: "/Huawei_Standard_logo.png",
+      links: [],
+    },
   ],
 } as const;
