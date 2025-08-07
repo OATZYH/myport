@@ -26,17 +26,16 @@ export const photoCards = [
           We got runner up in the ExxonMobil IT Bootcathon 2024. 
           This hackathon is a combination of bootcamp and hackathon.
           We have opportunity to learn how corporation using Azure DevOps and how to work in a team.
-          More importantly, we have opportunity to talk with ExxonMobil's business team to gain more insight in oil industry.
-          We work and brainstorm with ExxonMobil's IT team to create a solution for their problem.
+          More importantly, we have opportunity to talk with ExxonMobil&apos;s business team to gain more insight in oil industry.
+          We work and brainstorm with ExxonMobil&apos;s IT team to create a solution for their problem.
         </p>
       );
     },
   },
-
   {
-    description: "Blind People",
+    description: "Dinner with Managing Director of Microsoft Thailand",
     title: "Microsoft AI for Accessibility Hackathon 2023",
-    src: "/microsoft_hackathon.png",
+    src: "/dinner.png",
     ctaText: "Visit",
     ctaLink: "https://ui.aceternity.com/templates",
     content: () => {
@@ -48,4 +47,19 @@ export const photoCards = [
       );
     },
   },
+  // {
+  //   description: "Blind People",
+  //   title: "Microsoft AI for Accessibility Hackathon 2023",
+  //   src: "/microsoft_hackathon.png",
+  //   ctaText: "Visit",
+  //   ctaLink: "https://ui.aceternity.com/templates",
+  //   content: () => {
+  //     return (
+  //       <p>
+  //         We got 2nd place in this hackathon. We have opportunity to learn how to use AI to help people with disabilities.
+  //         We have a chance to contact with FOUNDATION FOR THE BLIND IN THAILAND UNDER THE ROYAL PATRONAGE OF H.M. This is how journey begin to DIS Season 3.
+  //       </p>
+  //     );
+  //   },
+  // },
 ];

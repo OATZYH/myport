@@ -38,6 +38,14 @@ export const DATA = {
       logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
     },
     {
+      name: "NestJs",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-original.svg",
+    },
+    {
+      name: "PHP",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg",
+    },
+    {
       name: "Python",
       logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
     },
@@ -68,7 +76,7 @@ export const DATA = {
     {
       name: "TailwindCSS",
       logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
-    },
+    }
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
@@ -261,6 +269,29 @@ export const DATA = {
       image: "/shortenurl.png",
       video: "",
     },
+    {
+      title: "FundFlow",
+      href: "https://github.com/tawayahc/FundFlow",
+      dates: "",
+      active: true,
+      description:
+        "FundFlow is a mobile application designed to simplify personal financial management by allowing users to record daily income and expenses. The app integrates Artificial Intelligence (AI) for analyzing mobile banking receipts and categorizing transactions, helping users to efficiently track and manage their finances.",
+      technologies: [
+        "Flutter",
+        "Go",
+        "FastAPI (Python)",
+        "PostgreSQL",
+      ],
+      links: [
+        {
+          type: "Source",
+          href: "https://github.com/tawayahc/FundFlow",
+          icon: <Icons.github className="w-4 h-4" />,
+        },
+      ],
+      image: "/FundFlow.png",
+      video: "",
+    }
   ],
   hackathons: [
     {
