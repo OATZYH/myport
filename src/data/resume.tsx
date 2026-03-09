@@ -10,7 +10,7 @@ export const DATA = {
   description:
     "Software Engineer turned Entrepreneur. I love building things and helping people.",
   summary:
-    "I'm a fast learner with strong skills in both frontend and backend (Fullstack) development. I’m always picking up new tools and tech, which helps me dive into projects quickly. Known for being a reliable team player, I take ownership of my work and enjoy collaborating to drive results. I thrive on tackling new challenges and continuously building my skill set.",
+    "Full-stack Developer and Computer Engineering Senior with a focus on building robust applications and managing self-hosted infrastructure. From optimizing frontend performance to scripting complex migrations across MySQL, Oracle, and Postgres, I bring a hands-on approach to solving technical debt and scaling features. Experienced in working within high-stakes environments and dedicated to implementing AI integrations to drive project success.",
   avatarUrl: "/profiles-square-zoom.jpg",
   skills: [
     {
@@ -129,6 +129,18 @@ export const DATA = {
   },
 
   work: [
+    {
+      company: "Synnery Co., Ltd.",
+      href: "https://www.freelancer.com/u/sarunkhumthai",
+      badges: [],
+      location: "Remote",
+      title: "Full-stack Developer",
+      logoUrl: "/freelance.png",
+      start: "June 2025",
+      end: "October 2025",
+      description:
+        "Developed and maintained a large-scale enterprise CMS for major government agencies, utilizing PHP and Vue.js to build complex administrative modules for menu management and role-based access control.",
+    },
     {
       company: "Skinzync",
       href: "https://atomic.finance",
