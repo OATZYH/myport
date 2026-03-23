@@ -20,7 +20,7 @@ export default function Page() {
   const { theme } = useTheme();
   const color = theme === "dark" ? "#ffffff" : "#000000";
   return (
-    <main className="flex flex-col min-h-[100dvh] space-y-10 ">
+    <main className="flex flex-col min-h-dvh space-y-10 ">
       <Particles
         className="absolute inset-0 h-full"
         quantity={200}
@@ -130,7 +130,7 @@ export default function Page() {
                   variant="outline"
                   className="flex items-center gap-2 px-3 py-1.5 text-sm bg-background hover:bg-muted rounded-lg"
                 >
-                  <div className="relative w-5 h-5 flex-shrink-0">
+                  <div className="relative w-5 h-5 shrink-0">
                     <Image
                       src={skill.logo || "https://placehold.co/400"}
                       alt={`${skill.name} logo`}

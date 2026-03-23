@@ -111,7 +111,7 @@ export default function ContactMe() {
         and I&apos;ll respond whenever I can. I will ignore all soliciting.
       </p>
       <div className="bg-white p-6 rounded-lg shadow-md flex flex-col h-full">
-        <form onSubmit={handleSubmit} className="space-y-4 flex-grow">
+        <form onSubmit={handleSubmit} className="space-y-4 grow">
           <Input
             type="text"
             name="name"
@@ -131,7 +131,7 @@ export default function ContactMe() {
           <Textarea
             name="message"
             placeholder="Message Here..."
-            className="h-32 flex-grow"
+            className="h-32 grow"
             value={formData.message}
             onChange={handleChange}
             required
