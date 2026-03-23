@@ -1,5 +1,4 @@
 "use client";
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import { HackathonCard } from "@/components/hackathon-card";
 import { BlurFade } from "@/components/magicui/blur-fade";
@@ -19,11 +18,7 @@ const BLUR_FADE_DELAY = 0.04;
 
 export default function Page() {
   const { theme } = useTheme();
-  const [color, setColor] = useState("#ffffff");
-
-  useEffect(() => {
-    setColor(theme === "dark" ? "#ffffff" : "#000000");
-  }, [theme]);
+  const color = theme === "dark" ? "#ffffff" : "#000000";
   return (
     <main className="flex flex-col min-h-[100dvh] space-y-10 ">
       <Particles
