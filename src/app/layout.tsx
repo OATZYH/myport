@@ -1,4 +1,3 @@
-import Navbar from "@/components/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
@@ -6,8 +5,9 @@ import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter as FontSans, Geist } from "next/font/google";
 import "./globals.css";
-import { Toaster } from "@/components/ui/toaster"
+import { Toaster } from "@/components/ui/sonner"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { AppleStyleDock } from "@/components/dock";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -64,7 +64,8 @@ export default function RootLayout({
           <TooltipProvider delayDuration={0}>
           
             {children}
-            <Navbar />
+            {/* <Navbar /> */}
+            <AppleStyleDock />
           </TooltipProvider>
           <Toaster />
         </ThemeProvider>

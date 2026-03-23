@@ -1,19 +1,19 @@
 "use client";
 import Image from "next/image";
-import { HackathonCard } from "@/components/hackathon-card";
+import { ActivitySection } from "@/components/section/activity-section";
 import { BlurFade } from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
-import { ProjectCard } from "@/components/project-card";
-import { ResumeCard } from "@/components/resume-card";
+import { ProjectCard } from "@/components/section/project-card";
+import { WorkSection } from "@/components/section/work-section";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { DATA } from "@/data/resume";
 import Markdown from "react-markdown";
 import Particles from "@/components/magicui/particles";
 import { useTheme } from "next-themes";
-import { PhotoCard } from "@/components/photo-card";
+import { PhotoCard } from "@/components/section/photo-card-section";
 import SparklesText from "@/components/magicui/sparkles-text";
-import ContactMe from "@/components/contactme";
+import ContactMe from "@/components/section/contact-section";
 const BLUR_FADE_DELAY = 0.04;
 
 export default function Page() {
@@ -39,7 +39,7 @@ export default function Page() {
                 text={`Hi, I'm ${DATA.name.split(" ")[0]} 👋`}
               />
               <BlurFadeText
-                className="max-w-[600px] md:text-xl"
+                className="max-w-600px md:text-xl"
                 delay={BLUR_FADE_DELAY}
                 text={DATA.description}
               />
@@ -76,7 +76,7 @@ export default function Page() {
               key={work.company}
               delay={BLUR_FADE_DELAY * 6 + id * 0.05}
             >
-              <ResumeCard
+              <WorkSection
                 key={work.company}
                 logoUrl={work.logoUrl}
                 altText={work.company}
@@ -101,7 +101,7 @@ export default function Page() {
               key={education.school}
               delay={BLUR_FADE_DELAY * 8 + id * 0.05}
             >
-              <ResumeCard
+              <WorkSection
                 key={education.school}
                 href={education.href}
                 logoUrl={education.logoUrl}
@@ -128,14 +128,14 @@ export default function Page() {
                 <Badge
                   key={skill.name}
                   variant="outline"
-                  className="flex items-center gap-2 px-3 py-1.5 text-sm bg-background hover:bg-muted rounded-lg"
+                  className="flex items-center gap-2 px-3 py-1.5 text-sm bg-background hover:bg-muted rounded-lg h-auto"
                 >
-                  <div className="relative w-5 h-5 shrink-0">
+                  <div className="relative w-5 h-5 shrink-0 overflow-hidden rounded-sm">
                     <Image
                       src={skill.logo || "https://placehold.co/400"}
                       alt={`${skill.name} logo`}
                       fill
-                      className="object-contain"
+                      className="object-cover"
                     />
                   </div>
                   {skill.name}
@@ -214,7 +214,7 @@ export default function Page() {
                   key={project.title + project.dates}
                   delay={BLUR_FADE_DELAY * 15 + id * 0.05}
                 >
-                  <HackathonCard
+                  <ActivitySection
                     title={project.title}
                     description={project.description}
                     location={project.location}

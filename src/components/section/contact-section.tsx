@@ -4,9 +4,13 @@ import { useState, ChangeEvent, FormEvent } from "react";
 import axios from "axios";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
-import { AnimatedButton, ButtonStatus } from "@/components/magicui/animated-button";
-import { CheckIcon, ChevronRightIcon, TriangleAlert  } from "lucide-react";
+import { toast } from "sonner";
+import {
+  AnimatedButton,
+  ButtonStatus,
+} from "@/components/magicui/animated-button";
+import { CheckIcon, ChevronRightIcon, MailIcon, TriangleAlert } from "lucide-react";
+import { Button } from "../ui/button";
 
 interface FormData {
   name: string;
@@ -22,12 +26,11 @@ export default function ContactMe() {
   });
 
   const [statusMessage, setStatusMessage] = useState<string>("");
-  const { toast } = useToast();
   const [buttonStatus, setButtonStatus] = useState<ButtonStatus>("idle");
 
   // Handle input changes
   const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setFormData({
       ...formData,
@@ -57,23 +60,16 @@ export default function ContactMe() {
       throw new Error("The environment variable is not defined");
     }
 
-
     try {
-      const response = await axios.post(
-        url,
-        formData,
-        {
-          headers: {
-            Accept: "application/json",
-          },
-        }
-      );
+      const response = await axios.post(url, formData, {
+        headers: {
+          Accept: "application/json",
+        },
+      });
 
       if (response.status === 200) {
-        toast({
-          title: "Message sent successfully!",
+        toast.success("Message sent successfully!", {
           description: "I will respond whenever I can.",
-          variant: "success",
         });
         setButtonStatus("success"); // Update button status to success
         setFormData({ name: "", email: "", message: "" });
@@ -85,10 +81,8 @@ export default function ContactMe() {
       }
     } catch (error) {
       console.error("Form submission error:", error);
-      toast({
-        title: "Submission failed",
+      toast.error("Submission failed", {
         description: "Something went wrong. Please try again.",
-        variant: "destructive",
       });
       setButtonStatus("error"); // Update button status to error
 
@@ -105,12 +99,12 @@ export default function ContactMe() {
       <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
         Get in Touch
       </h2>
-      <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+      <p className="mx-auto max-w-600px text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
         Want to chat? Just send me a message
         <br />
         and I&apos;ll respond whenever I can. I will ignore all soliciting.
       </p>
-      <div className="bg-white p-6 rounded-lg shadow-md flex flex-col h-full">
+      <div className="bg-card text-card-foreground p-6 rounded-lg shadow-md flex flex-col h-full">
         <form onSubmit={handleSubmit} className="space-y-4 grow">
           <Input
             type="text"
@@ -119,6 +113,7 @@ export default function ContactMe() {
             value={formData.name}
             onChange={handleChange}
             required
+            className="border-muted"
           />
           <Input
             type="email"
@@ -127,39 +122,48 @@ export default function ContactMe() {
             value={formData.email}
             onChange={handleChange}
             required
+            className="border-muted"
           />
           <Textarea
             name="message"
             placeholder="Message Here..."
-            className="h-32 grow"
+            className="h-32 grow border-muted"
             value={formData.message}
             onChange={handleChange}
             required
           />
-          <AnimatedButton
-            buttonColor="#000000"
-            buttonTextColor="#FFFFFF"
-            status={buttonStatus}
-            initialText={
-              <span className="group inline-flex items-center">
-              Send Message{" "}
-              <ChevronRightIcon className="ml-1 size-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </span>
-            }
-            successText={
-              <span className="group inline-flex items-center">
-                <CheckIcon className="mr-2 size-4" />
-                Message Sent!{" "}
-              </span>
-            }
-            
-            errorText={
-              <span className="group inline-flex items-center">
-                <TriangleAlert className="mr-2 size-4" />
-                Submission Failed{" "}
-              </span>
-            }
-          />
+          <div className="flex gap-2">
+            <Button type="button" variant="outline" className="flex-1 rounded-md py-2.5 h-auto cursor-pointer" onClick={() => {
+              const mailtoLink = `mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}?subject=Contact%20from%20Portfolio&body=Hi%20Sarun,`;
+              window.open(mailtoLink, "_blank", "noopener,noreferrer");
+            }}>
+              <MailIcon className="mr-2 size-4" />
+              Email
+            </Button>
+            <div className="flex flex-3">
+              <AnimatedButton
+                status={buttonStatus}
+                initialText={
+                  <span className="group inline-flex items-center">
+                    Send Message{" "}
+                    <ChevronRightIcon className="ml-1 size-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  </span>
+                }
+                successText={
+                  <span className="group inline-flex items-center">
+                    <CheckIcon className="mr-2 size-4" />
+                    Message Sent!{" "}
+                  </span>
+                }
+                errorText={
+                  <span className="group inline-flex items-center">
+                    <TriangleAlert className="mr-2 size-4" />
+                    Submission Failed{" "}
+                  </span>
+                }
+              />
+            </div>
+          </div>
         </form>
         {statusMessage && (
           <p className="mt-2 text-sm text-red-600">{statusMessage}</p>

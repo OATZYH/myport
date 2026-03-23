@@ -1,17 +1,18 @@
 import { Icons } from "@/components/icons";
+import { url } from "inspector";
 import { HomeIcon, NotebookIcon } from "lucide-react";
 
 export const DATA = {
   name: "Sarun Khumthai",
-  initials: "SR",
-  url: "https://dillion.io",
+  initials: "SRN",
+  url: "https://oatzyhport.vercel.app",
   location: "Bangkok, Thailand",
-  locationLink: "https://www.google.com/maps/place/sanfrancisco",
+  locationLink: "https://www.google.com/maps/place/Bangkok",
   description:
-    "Software Engineer turned Entrepreneur. I love building things and helping people.",
+    "Full Stack Everything. I love building things and helping people.",
   summary:
-    "Full-stack Developer and Computer Engineering Senior with a focus on building robust applications and managing self-hosted infrastructure. From optimizing frontend performance to scripting complex migrations across MySQL, Oracle, and Postgres, I bring a hands-on approach to solving technical debt and scaling features. Experienced in working within high-stakes environments and dedicated to implementing AI integrations to drive project success.",
-  avatarUrl: "/profiles-square-zoom.jpg",
+    "Full stack developer and computer engineering senior here. My focus is on developing robust applications and self-hosted infrastructures. I optimize frontend code, have created scripts to fix challenging migration issues involving MySQL, Oracle, and Postgres. I'm a hands-on person in solving technical debt and scalability issues. I have experience in high-pressure environments and am dedicated to including AI features to take things to the next level.",
+  avatarUrl: "/profile-square.webp",
   skills: [
     {
       name: "React",
@@ -79,12 +80,13 @@ export const DATA = {
     }
   ],
   navbar: [
-    { href: "/", icon: HomeIcon, label: "Home" },
+    { href: "/", icon: HomeIcon, label: "Home", hoverColor: "group-hover:text-blue-500" },
     // { href: "/blog", icon: NotebookIcon, label: "Blog" },
     {
-      href: "https://sarun-resume.tiiny.site",
+      href: "https://rxresu.me/oatzyh/resume",
       icon: NotebookIcon,
       label: "Resume",
+      hoverColor: "group-hover:text-amber-500",
     },
   ],
   contact: {
@@ -95,35 +97,22 @@ export const DATA = {
         name: "GitHub",
         url: "https://github.com/OATZYH",
         icon: Icons.github,
-
         navbar: true,
+        hoverColor: "group-hover:text-foreground",
       },
       LinkedIn: {
         name: "LinkedIn",
         url: "https://www.linkedin.com/in/sarun-khumthai/",
         icon: Icons.linkedin,
-
         navbar: true,
-      },
-      X: {
-        name: "X",
-        url: "https://dub.sh/dillion-twitter",
-        icon: Icons.x,
-
-        navbar: false,
-      },
-      Youtube: {
-        name: "Youtube",
-        url: "https://dub.sh/dillion-youtube",
-        icon: Icons.youtube,
-        navbar: false,
+        hoverColor: "group-hover:text-blue-600",
       },
       email: {
         name: "Send Email",
         url: "#contact",
         icon: Icons.email,
-
         navbar: true,
+        hoverColor: "group-hover:text-rose-500",
       },
     },
   },
@@ -131,28 +120,28 @@ export const DATA = {
   work: [
     {
       company: "Synnery Co., Ltd.",
-      href: "https://www.freelancer.com/u/sarunkhumthai",
+      href: "https://www.synerry.com/",
       badges: [],
       location: "Remote",
-      title: "Full-stack Developer",
-      logoUrl: "/freelance.png",
+      title: "Fullstack Developer Intern",
+      logoUrl: "/synerry.jpg",
       start: "June 2025",
       end: "October 2025",
       description:
         "Developed and maintained a large-scale enterprise CMS for major government agencies, utilizing PHP and Vue.js to build complex administrative modules for menu management and role-based access control.",
     },
-    {
-      company: "Skinzync",
-      href: "https://atomic.finance",
-      badges: [],
-      location: "Remote",
-      title: "Software Engineer",
-      logoUrl: "/skinzync (750 x 750 px).png",
-      start: "Aug 2024",
-      end: "Present",
-      description:
-        "Full-stack development of the Skinzync platform, managing both frontend and backend integration. End-to-end product deployment and Infrastructure management.",
-    },
+    // {
+    //   company: "Skinzync",
+    //   href: "https://skinzync.com",
+    //   badges: [],
+    //   location: "Remote",
+    //   title: "Software Engineer",
+    //   logoUrl: "/skinzync (750 x 750 px).png",
+    //   start: "Aug 2024",
+    //   end: "Present",
+    //   description:
+    //     "Full-stack development of the Skinzync platform, managing both frontend and backend integration. End-to-end product deployment and Infrastructure management.",
+    // },
   ],
   education: [
     {
@@ -201,31 +190,54 @@ export const DATA = {
       video: "",
     },
     {
-      title: "Expense tracker",
-      href: "https://github.com/OATZYH/expense-tracker",
+      title: "FundFlow",
+      href: "https://github.com/tawayahc/FundFlow",
       dates: "",
-      active: false,
+      active: true,
       description:
-        "This expense tracker project efficiently manages income and expenses. It offers a responsive user interface and secure data handling, create CRUD operations with Prisma and PostgreSQL.",
+        "FundFlow is a mobile application designed to simplify personal financial management by allowing users to record daily income and expenses. The app integrates Artificial Intelligence (AI) for analyzing mobile banking receipts and categorizing transactions, helping users to efficiently track and manage their finances.",
       technologies: [
-        "Next.js",
-        "Javascript",
+        "Flutter",
+        "Go",
+        "FastAPI (Python)",
         "PostgreSQL",
-        "Prisma",
-        "TailwindCSS",
-        "NextUI",
       ],
       links: [
         {
           type: "Source",
-          href: "https://github.com/OATZYH/expense-tracker",
-          icon: <Icons.github className="h-4 w-4" />,
+          href: "https://github.com/tawayahc/FundFlow",
+          icon: <Icons.github className="w-4 h-4" />,
         },
       ],
-      image:
-        "https://raw.githubusercontent.com/OATZYH/expense-tracker/master/public/github/Home.png",
+      image: "/FundFlow.png",
       video: "",
     },
+    // {
+    //   title: "Expense tracker",
+    //   href: "https://github.com/OATZYH/expense-tracker",
+    //   dates: "",
+    //   active: false,
+    //   description:
+    //     "This expense tracker project efficiently manages income and expenses. It offers a responsive user interface and secure data handling, create CRUD operations with Prisma and PostgreSQL.",
+    //   technologies: [
+    //     "Next.js",
+    //     "Javascript",
+    //     "PostgreSQL",
+    //     "Prisma",
+    //     "TailwindCSS",
+    //     "NextUI",
+    //   ],
+    //   links: [
+    //     {
+    //       type: "Source",
+    //       href: "https://github.com/OATZYH/expense-tracker",
+    //       icon: <Icons.github className="h-4 w-4" />,
+    //     },
+    //   ],
+    //   image:
+    //     "https://raw.githubusercontent.com/OATZYH/expense-tracker/master/public/github/Home.png",
+    //   video: "",
+    // },
     {
       title: "Mobil Support",
       href: "https://github.com/WinRafaelx/Bootcathon_Application_Smuttee",
@@ -281,29 +293,6 @@ export const DATA = {
       image: "/shortenurl.png",
       video: "",
     },
-    {
-      title: "FundFlow",
-      href: "https://github.com/tawayahc/FundFlow",
-      dates: "",
-      active: true,
-      description:
-        "FundFlow is a mobile application designed to simplify personal financial management by allowing users to record daily income and expenses. The app integrates Artificial Intelligence (AI) for analyzing mobile banking receipts and categorizing transactions, helping users to efficiently track and manage their finances.",
-      technologies: [
-        "Flutter",
-        "Go",
-        "FastAPI (Python)",
-        "PostgreSQL",
-      ],
-      links: [
-        {
-          type: "Source",
-          href: "https://github.com/tawayahc/FundFlow",
-          icon: <Icons.github className="w-4 h-4" />,
-        },
-      ],
-      image: "/FundFlow.png",
-      video: "",
-    }
   ],
   hackathons: [
     {
