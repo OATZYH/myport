@@ -35,7 +35,7 @@ export const photoCards = [
   {
     description: "Dinner with Managing Director of Microsoft Thailand",
     title: "Microsoft AI for Accessibility Hackathon 2023",
-    src: "/dinner.png",
+    src: "/dinner.webp",
     ctaText: "Visit",
     ctaLink: "https://ui.aceternity.com/templates",
     content: () => {
