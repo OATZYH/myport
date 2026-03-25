@@ -149,6 +149,7 @@ function MorphingDialogContent({
   const [lastFocusableElement, setLastFocusableElement] =
     useState<HTMLElement | null>(null);
 
+  // Combined useEffect for keyboard handling
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -178,22 +179,40 @@ function MorphingDialogContent({
     };
   }, [setIsOpen, firstFocusableElement, lastFocusableElement]);
 
+  // Use useLayoutEffect to prevent visible layout shifts
+  // Use data attribute instead of class to avoid layout recalculation
   useEffect(() => {
     if (isOpen) {
-      document.body.classList.add('overflow-hidden');
+      // Use data attribute instead of class to prevent layout shift
+      document.body.style.overflow = 'hidden';
+
+      // Batch DOM reads to prevent multiple reflows
       const focusableElements = containerRef.current?.querySelectorAll(
         'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
       );
+
       if (focusableElements && focusableElements.length > 0) {
-        setFirstFocusableElement(focusableElements[0] as HTMLElement);
-        setLastFocusableElement(
-          focusableElements[focusableElements.length - 1] as HTMLElement
-        );
-        (focusableElements[0] as HTMLElement).focus();
+        const firstElement = focusableElements[0] as HTMLElement;
+        const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+
+        setFirstFocusableElement(firstElement);
+        setLastFocusableElement(lastElement);
+
+        // Focus in next tick to avoid reflow during render
+        requestAnimationFrame(() => {
+          firstElement.focus();
+        });
       }
     } else {
-      document.body.classList.remove('overflow-hidden');
-      triggerRef.current?.focus();
+      // Reset overflow
+      document.body.style.overflow = '';
+
+      // Restore focus in next tick
+      if (triggerRef.current) {
+        requestAnimationFrame(() => {
+          triggerRef.current?.focus();
+        });
+      }
     }
   }, [isOpen, triggerRef]);
 
@@ -237,17 +256,17 @@ function MorphingDialogContainer({ children }: MorphingDialogContainerProps) {
   if (!mounted) return null;
 
   return createPortal(
-    <AnimatePresence initial={false} mode='sync'>
+    <AnimatePresence initial={false} mode='wait'>
       {isOpen && (
         <>
           <motion.div
             key={`backdrop-${uniqueId}`}
-            className='fixed inset-0 h-full w-full bg-white/40 backdrop-blur-xs dark:bg-black/40'
+            className='fixed inset-0 h-full w-full bg-white/40 backdrop-blur-xs dark:bg-black/40 will-change-[opacity]'
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           />
-          <div className='fixed inset-0 z-50 flex items-center justify-center'>
+          <div className='fixed inset-0 z-50 flex items-center justify-center will-change-transform'>
             {children}
           </div>
         </>
