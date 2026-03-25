@@ -14,12 +14,14 @@ import {
   cloneElement,
   createContext,
   useContext,
+  useCallback,
   useEffect,
   useMemo,
   useRef,
   useState,
 } from 'react';
 import { cn } from '@/lib/utils';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const DOCK_HEIGHT = 128;
 const DEFAULT_MAGNIFICATION = 80;
@@ -87,6 +89,10 @@ function Dock({
 }: DockProps) {
   const mouseX = useMotionValue(Infinity);
   const isHovered = useMotionValue(0);
+  const rafRef = useRef<number | null>(null);
+
+  // Detect mobile devices - disable magnification on mobile for better performance
+  const isMobile = useIsMobile();
 
   const maxHeight = useMemo(() => {
     return Math.max(DOCK_HEIGHT, magnification + magnification / 2 + 4);
@@ -95,25 +101,61 @@ function Dock({
   const heightRow = useTransform(isHovered, [0, 1], [panelHeight, maxHeight]);
   const height = useSpring(heightRow, spring);
 
+  // Throttled mouse move handler using RAF
+  const handleMouseMove = useCallback(
+    ({ pageX }: React.MouseEvent) => {
+      // Skip on mobile
+      if (isMobile) return;
+
+      // Cancel previous RAF if it exists
+      if (rafRef.current !== null) {
+        cancelAnimationFrame(rafRef.current);
+      }
+
+      // Throttle updates using RAF
+      rafRef.current = requestAnimationFrame(() => {
+        isHovered.set(1);
+        mouseX.set(pageX);
+      });
+    },
+    [isHovered, mouseX, isMobile]
+  );
+
+  const handleMouseLeave = useCallback(() => {
+    // Cancel any pending RAF
+    if (rafRef.current !== null) {
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = null;
+    }
+
+    isHovered.set(0);
+    mouseX.set(Infinity);
+  }, [isHovered, mouseX]);
+
+  // Cleanup RAF on unmount
+  useEffect(() => {
+    return () => {
+      if (rafRef.current !== null) {
+        cancelAnimationFrame(rafRef.current);
+      }
+    };
+  }, []);
+
   return (
     <motion.div
       style={{
         height: height,
         scrollbarWidth: 'none',
       }}
-      className='mx-2 flex max-w-full items-end overflow-x-auto'
+      className='mx-2 flex max-w-full items-end overflow-x-auto will-change-[height]'
     >
       <motion.div
-        onMouseMove={({ pageX }) => {
-          isHovered.set(1);
-          mouseX.set(pageX);
-        }}
-        onMouseLeave={() => {
-          isHovered.set(0);
-          mouseX.set(Infinity);
-        }}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
         className={cn(
           'mx-auto flex w-fit gap-4 rounded-2xl bg-gray-50 px-4 dark:bg-neutral-900',
+          'transform-gpu', // Hardware acceleration
+          isMobile && 'transition-none', // Disable transitions on mobile
           className
         )}
         style={{ height: panelHeight }}
@@ -130,14 +172,33 @@ function Dock({
 
 function DockItem({ children, className, onClick }: DockItemProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const rectCache = useRef<{ x: number; width: number } | null>(null);
+  const cacheTimeRef = useRef<number>(0);
 
   const { distance, magnification, mouseX, spring } = useDock();
 
   const isHovered = useMotionValue(0);
 
-  const mouseDistance = useTransform(mouseX, (val) => {
+  // Cache getBoundingClientRect to avoid expensive layout recalculations
+  const getRect = useCallback(() => {
+    const now = Date.now();
+    // Cache for 100ms to reduce layout thrashing
+    if (rectCache.current && now - cacheTimeRef.current < 100) {
+      return rectCache.current;
+    }
+
     const domRect = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
-    return val - domRect.x - domRect.width / 2;
+    rectCache.current = { x: domRect.x, width: domRect.width };
+    cacheTimeRef.current = now;
+    return rectCache.current;
+  }, []);
+
+  const mouseDistance = useTransform(mouseX, (val) => {
+    // If mouse is at Infinity, element is not hovered
+    if (val === Infinity) return distance + 1;
+
+    const rect = getRect();
+    return val - rect.x - rect.width / 2;
   });
 
   const widthTransform = useTransform(
@@ -148,16 +209,27 @@ function DockItem({ children, className, onClick }: DockItemProps) {
 
   const width = useSpring(widthTransform, spring);
 
+  // Invalidate cache when hover state changes
+  const handleHoverStart = useCallback(() => {
+    rectCache.current = null;
+    isHovered.set(1);
+  }, [isHovered]);
+
+  const handleHoverEnd = useCallback(() => {
+    rectCache.current = null;
+    isHovered.set(0);
+  }, [isHovered]);
+
   return (
     <motion.div
       ref={ref}
       style={{ width }}
-      onHoverStart={() => isHovered.set(1)}
-      onHoverEnd={() => isHovered.set(0)}
+      onHoverStart={handleHoverStart}
+      onHoverEnd={handleHoverEnd}
       onFocus={() => isHovered.set(1)}
       onBlur={() => isHovered.set(0)}
       className={cn(
-        'group relative inline-flex items-center justify-center',
+        'group relative inline-flex items-center justify-center will-change-[width]',
         className
       )}
       tabIndex={0}

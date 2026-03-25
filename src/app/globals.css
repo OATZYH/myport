@@ -207,3 +207,9 @@
     mix-blend-mode: normal;
 }
 
+/* Prevent layout shift when dialog opens and scrollbar disappears */
+body {
+  /* Reserve space for scrollbar to prevent content jump */
+  scrollbar-gutter: stable;
+}
+
